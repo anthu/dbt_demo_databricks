@@ -1,0 +1,39 @@
+name: 'tpch_medallion_databricks'
+version: '1.0.0'
+config-version: 2
+
+profile: 'tpch_medallion_databricks'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  tpch_medallion_databricks:
+    +materialized: table
+    
+    bronze:
+      +materialized: table
+      +file_format: delta
+      +schema: bronze
+      +tags: ["bronze", "raw", "databricks"]
+      
+    silver:
+      +materialized: table
+      +file_format: delta
+      +schema: silver
+      +tags: ["silver", "cleaned", "databricks"]
+      
+    gold:
+      +materialized: table
+      +file_format: delta
+      +schema: gold
+      +tags: ["gold", "business", "databricks"]

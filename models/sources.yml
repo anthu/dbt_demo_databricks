@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: tpch_databricks
+    description: >
+      TPC-H benchmark data for Databricks implementation.
+      Using Unity Catalog shared sample data from samples.tpch.
+    catalog: samples
+    schema: tpch
+    
+    tables:
+      - name: region
+        description: Geographic regions (5 regions)
+      - name: nation
+        description: Nations within regions (25 nations)
+      - name: customer
+        description: Customer master data with demographics
+      - name: supplier
+        description: Supplier master data with geographic information
+      - name: part
+        description: Product catalog with specifications
+      - name: partsupp
+        description: Part-supplier relationships with pricing and availability
+      - name: orders
+        description: Order headers with customer information
+      - name: lineitem
+        description: Order line items (main fact table)
